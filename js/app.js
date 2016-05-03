@@ -11,9 +11,6 @@ var Questions = function(question){
 	this.question = question;
 };
 
-// Questions.prototype.createDrink = function(preferences) {
-
-// }
 // bartenderQuestions object
 var bartenderQuestions = new Questions([
 	"Do ye like yer drinks strong?",
@@ -23,19 +20,6 @@ var bartenderQuestions = new Questions([
 	"Are ye one for a fruity finish?"
 ])
 console.log(bartenderQuestions.question)
-
-
-// display first question on pageLoad
-displayQuestion.append(bartenderQuestions.question[questionIndex])
-
-
-	$('.next-btn').click(function(){
-		console.log("next button clicked")
-		questionIndex++;
-		console.log(questionIndex)
-		displayQuestion.empty()
-		displayQuestion.append(bartenderQuestions.question[questionIndex])
-	})
 
 
 //Ingredients constructor function with ingredients argument
@@ -65,6 +49,48 @@ var pantryItems = new Pantry([
 console.log(pantryItems.pantry)
 
 
+// display first question on pageLoad
+displayQuestion.append(bartenderQuestions.question[questionIndex])
+
+
+//displays next question
+$('.next-btn').click(function(){
+	console.log("next button clicked")
+	questionIndex++;
+	console.log(questionIndex)
+	$('#user-preferences').empty()
+	displayQuestion.empty()
+	displayQuestion.append(bartenderQuestions.question[questionIndex])
+})
+
+
+function yesIngredients(){
+	if  (bartenderQuestions.question[questionIndex]) {
+		document.getElementById("user-preferences").innerHTML = "We can " +drinkIngredients.ingredients[questionIndex];
+	}
+}
+
+function noIngredients() {
+	if (bartenderQuestions.question[questionIndex]) {
+		document.getElementById("user-preferences").innerHTML = "No thanks";
+	}
+}
+
+	$('.yes-btn').click(function() {
+		yesIngredients()
+	})
+
+	$('.no-btn').click(function(){
+		noIngredients()
+	})
+
+
+// preferences object for user input 
+
+// createDrink method to take preferences object and construction new drink object by fetching randomly chosen ingredients from the pantry which matches the user's preferences
+
+// bartender object - drink is created based on preferences
+	//var bartender = new 
 
 
 }) // end function
