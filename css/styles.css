@@ -31,17 +31,13 @@ body {
     background-repeat: no-repeat;
     text-align: center;
     letter-spacing: 1px;
-
-    
 }
 
 h1,
-.intro,
 .question,
 .answers,
 #user-preferences {
      margin-bottom: 25px;
-
 }
 
 h1 {
@@ -50,15 +46,31 @@ h1 {
 
 .intro {
     font-family: oranienbaum;
-    line-height: 25px;
+    line-height: 30px;
+    margin-bottom: 60px;
+}
+
+.question {
     font-style: italic;
+    font-weight: bold;
 }
 
 button {
-  width: 130px;
-  padding: 8px;
-  border-radius: 12px;
-  font-size: 16px; 
+    padding: 8px;
+    border-radius: 12px;
+    background-color: #fff;
+    width: 100px;
+    font-size: 14px; 
+}
+
+.yes-btn {
+    margin-right: 5px;
+}
+
+.next {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 12px; 
+    text-transform: uppercase;
 }
 
 /*iPhone portrait*/
@@ -82,12 +94,9 @@ button {
         font-size: 35px;
     }
 
-    .intro {
+    .intro,
+    .question  {
         font-size: 18px;
-    }
-
-    .question {
-        font-size: 16px;
     }
 }
 
