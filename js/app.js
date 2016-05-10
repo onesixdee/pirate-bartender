@@ -3,95 +3,117 @@
 $(function() {
 
 	var displayQuestion = $('.question')
-	var questionIndex = 0;
+	var yesButton = $('.yes-btn')
+	var noButton = $('.no-btn')
+	var nextButton = $('.next-btn')
+	var count = 0
+	var questionIndex = 0
+	// an array of user drinkIngredients preferences
+	var drinkIngredientsRequested = []
 
 
-// Questions constructor function with question argument
-var Questions = function(question){
-	this.question = question;
-};
-
-// bartenderQuestions object
-var bartenderQuestions = new Questions([
-	"Do ye like yer drinks strong?",
-	"Do ye like it with a salty tang?",
-	"Are ye a lubber who likes it bitter?",
-	"Would ye like a bit of sweetness with yer poison?",
-	"Are ye one for a fruity finish?"
-])
-console.log(bartenderQuestions.question)
-
-
-//Ingredients constructor function with ingredients argument
-var Ingredients = function(ingredients){
-	this.ingredients = ingredients;
-} 
-// drinkIngredients object
-var drinkIngredients = new Ingredients([
-	"Glug of rum, slug of whisky, splash of gin",
-	"Olive on a stick, salt-dusted rim, rasher of bacon",
-	"Shake of bitters, splash of tonic, twist of lemon peel",
-	"Sugar cube, spoonful of honey, splash of cola",
-	"Slice of orange, dash of cassis, cherry on top"
-])
-console.log(drinkIngredients.ingredients)
-
-
-// Pantry constructor function with pantry argument
-var Pantry = function(pantry){
-	this.pantry = pantry;
-}
-// pantryItems object
-var pantryItems = new Pantry([
-	'Rum', 'Whiskey', 'Gin', 'Olives', 'Salt', 'Lemon Peel', 'Tonic',
-	'Bitters', 'Sugar Cube', 'Honey', 'Cola', 'Orange', 'Cassis', 'Cherry', 'Bacon'
+	// Questions constructor function
+	var Questions = function(question) {
+		this.question = question;
+	};
+	// bartenderQuestions object
+	var bartenderQuestions = new Questions([
+		"Do ye like yer drinks strong?",
+		"Do ye like it with a salty tang?",
+		"Are ye a lubber who likes it bitter?",
+		"Would ye like a bit of sweetness with yer poison?",
+		"Are ye one for a fruity finish?"
 	])
-console.log(pantryItems.pantry)
+	//console.log("BARTENDERQUESTIONS" + "\n" + bartenderQuestions.question)
+
+	// Pantry constructor function
+	var Pantry = function(pantry) {
+		this.pantry = pantry;
+	}
+	// pantryItems object with key arrays
+	var pantryItems = new Pantry({
+		strong: ['Rum,', 'Whiskey,', 'Gin,'],
+		 salty: ['Olives,', 'Salt,', 'Bacon,'],
+		 bitter: ['Lemon Peel,', 'Tonic,', 'Bitters,'],
+		 sweet: ['Sugar Cube,', 'Honey,', 'Cola,'], 
+		 fruity: ['Orange.', 'Cassis.', 'Cherry.'] 
+	})
+	//console.log(pantryItems.pantry.strong[0]) //rum
+	
+	// Ingredients constructor function
+	var Ingredients = function(ingredients) {
+		this.ingredients = ingredients;
+	}
+	//drinkIngredients object
+	var drinkIngredients = new Ingredients([
+		"strong",
+		"salty",
+		"bitter",
+		"sweet",
+		"fruity"
+	])
+	//console.log("DRINKINGREDIENTS" + "\n" + drinkIngredients.ingredients)
 
 
-// display first question on pageLoad
-displayQuestion.append(bartenderQuestions.question[questionIndex])
+//displays drinkIngredients based on preferences and pushes preferences to array
+function yesIngredients() {
+	if  (bartenderQuestions.question[questionIndex]) {
+			// pushing users preferences to the empty drinkIngredientsRequested array
+			drinkIngredientsRequested.push(drinkIngredients.ingredients[questionIndex])
+			document.getElementById("user-preferences").innerHTML = "You like your drinks " + drinkIngredients.ingredients[questionIndex];
+	}
+}
+//display "no thanks"
+function noIngredients() {
+	if (bartenderQuestions.question[questionIndex]) {
+			document.getElementById("user-preferences").innerHTML = "No thanks.";
+	}
+}
 
+function endQuestions() {
+	if (count == 5) {
+		// displays user drink preferences
+		var preferences = new Ingredients(drinkIngredientsRequested);
+		//console.log(preferences) //ingredients array
+		//console.log(preferences.ingredients[0]) // strong
+		//console.log(pantryItems) // pantry object array 
+		//console.log(pantryItems.pantry) // array of pantry
+		//console.log(pantryItems.pantry[preferences.ingredients[0]][Math.floor(Math.random() * 3)]) // ["Rum", "Whiskey", "Gin"]
+		var randomNumber = Math.floor(Math.random() * 3) 
+		var createDrink = " "
 
-//displays next question
-$('.next-btn').click(function(){
-	console.log("next button clicked")
+		for (var i = 0 ; i < preferences.ingredients.length; i++) {
+			 createDrink+= pantryItems.pantry[preferences.ingredients[i]][randomNumber] + " "
+				// console.log(createDrink)
+			document.getElementById("user-preferences").innerHTML = "The Pirate Bartender made you a special drink with: " + createDrink;
+		}
+		yesButton.remove()
+		noButton.remove()
+		nextButton.remove()
+	}
+}
+
+//displays first question on page load
+displayQuestion.append(bartenderQuestions.question[questionIndex]) 
+
+yesButton.click(function() {
+	count++
+	yesIngredients()
+})
+
+noButton.click(function() {
+	count++
+	noIngredients()
+})
+
+//displays next question on click
+$('.next-btn').click(function() {
 	questionIndex++;
 	console.log(questionIndex)
 	$('#user-preferences').empty()
 	displayQuestion.empty()
 	displayQuestion.append(bartenderQuestions.question[questionIndex])
+	endQuestions()	
 })
 
-
-function yesIngredients(){
-	if  (bartenderQuestions.question[questionIndex]) {
-		document.getElementById("user-preferences").innerHTML = "We can " +drinkIngredients.ingredients[questionIndex];
-	}
-}
-
-function noIngredients() {
-	if (bartenderQuestions.question[questionIndex]) {
-		document.getElementById("user-preferences").innerHTML = "No thanks";
-	}
-}
-
-	$('.yes-btn').click(function() {
-		yesIngredients()
-	})
-
-	$('.no-btn').click(function(){
-		noIngredients()
-	})
-
-
-// preferences object for user input 
-
-// createDrink method to take preferences object and construction new drink object by fetching randomly chosen ingredients from the pantry which matches the user's preferences
-
-// bartender object - drink is created based on preferences
-	//var bartender = new 
-
-
-}) // end function
-
+}) // END DOM
