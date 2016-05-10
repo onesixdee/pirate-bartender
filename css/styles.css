@@ -34,9 +34,7 @@ body {
 }
 
 h1,
-.question,
-.answers,
-#user-preferences {
+.answers {
      margin-bottom: 25px;
 }
 
@@ -53,6 +51,7 @@ h1 {
 .question {
     font-style: italic;
     font-weight: bold;
+    margin-bottom: 25px;
 }
 
 button {
@@ -61,16 +60,30 @@ button {
     background-color: #fff;
     width: 100px;
     font-size: 14px; 
+    margin-top: 20px;
+}
+
+button:hover {
+
 }
 
 .yes-btn {
     margin-right: 5px;
 }
 
+#user-preferences {
+    /*margin-bottom: 20px;*/
+}
+
 .next {
     font-family: 'Helvetica', sans-serif;
     font-size: 12px; 
     text-transform: uppercase;
+}
+
+.next:hover {
+    text-decoration: underline;
+    font-size: 14px;
 }
 
 /*iPhone portrait*/
