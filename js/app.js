@@ -90,6 +90,7 @@ function endQuestions() {
 		yesButton.remove()
 		noButton.remove()
 		nextButton.remove()
+		$('.intro').remove()
 	}
 }
 
