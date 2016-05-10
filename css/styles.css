@@ -1,3 +1,13 @@
+@font-face {
+    font-family: calvin_and_hobbes;
+    src: url(../font/CALVINN.TTF);
+}
+
+@font-face{
+    font-family: oranienbaum;
+    src: url(../font/Oranienbaum.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,9 +25,40 @@
 }
 
 body {
-    background-image: url("../images/background.jpg");
+    /*image via unsplash.com by Patrick Shopflin*/
+    background-image: url("../images/background.jpg"); 
     background-size: cover;
     background-repeat: no-repeat;
+    text-align: center;
+    letter-spacing: 1px;
+
+    
+}
+
+h1,
+.intro,
+.question,
+.answers,
+#user-preferences {
+     margin-bottom: 25px;
+
+}
+
+h1 {
+    font-family: calvin_and_hobbes;
+}
+
+.intro {
+    font-family: oranienbaum;
+    line-height: 25px;
+    font-style: italic;
+}
+
+button {
+  width: 130px;
+  padding: 8px;
+  border-radius: 12px;
+  font-size: 16px; 
 }
 
 /*iPhone portrait*/
@@ -27,6 +68,26 @@ body {
         color: purple;
         height: 50rem;
         background-position: center top;
+        
+    }
+
+    .wrapper {
+        padding: 50px 20px;
+        height: 40rem;
+        margin: 50px 10px 50px 10px;
+        background: rgba(225, 225, 225, .5)
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .intro {
+        font-size: 18px;
+    }
+
+    .question {
+        font-size: 16px;
     }
 }
 
@@ -46,6 +107,19 @@ body {
     body {
         color: red;
     }
+
+      .wrapper {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .intro {
+        font-size: 20px;
+    }
 }
 
 
@@ -55,5 +129,10 @@ body {
     body {
         color: blue;
         height: 48rem;
+    }
+
+    .wrapper {
+        margin-left: 150px;
+        margin-right: 150px;
     }
 }
