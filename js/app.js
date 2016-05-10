@@ -32,11 +32,11 @@ $(function() {
 	}
 	// pantryItems object with key arrays
 	var pantryItems = new Pantry({
-		strong: ['Rum,', 'Whiskey,', 'Gin,'],
-		 salty: ['Olives,', 'Salt,', 'Bacon,'],
-		 bitter: ['Lemon Peel,', 'Tonic,', 'Bitters,'],
-		 sweet: ['Sugar Cube,', 'Honey,', 'Cola,'], 
-		 fruity: ['Orange.', 'Cassis.', 'Cherry.'] 
+		strong: ['Rum', 'Whiskey', 'Gin'],
+		 salty: ['Olives', 'Salt', 'Bacon'],
+		 bitter: ['Lemon Peel', 'Tonic', 'Bitters'],
+		 sweet: ['Sugar Cube', 'Honey', 'Cola'], 
+		 fruity: ['Orange', 'Cassis', 'Cherry'] 
 	})
 	//console.log(pantryItems.pantry.strong[0]) //rum
 	
@@ -83,9 +83,9 @@ function endQuestions() {
 		var createDrink = " "
 
 		for (var i = 0 ; i < preferences.ingredients.length; i++) {
-			 createDrink+= pantryItems.pantry[preferences.ingredients[i]][randomNumber] + " "
+			 createDrink+= pantryItems.pantry[preferences.ingredients[i]][randomNumber] + "<br>"
 				// console.log(createDrink)
-			document.getElementById("user-preferences").innerHTML = "The Pirate Bartender made you a special drink with: " + createDrink;
+			document.getElementById("user-preferences").innerHTML = "The Pirate Bartender made you a special cocktail with the following ingredients: " + "<br><br>" + createDrink;
 		}
 		yesButton.remove()
 		noButton.remove()
