@@ -85,7 +85,7 @@ function endQuestions() {
 		for (var i = 0 ; i < preferences.ingredients.length; i++) {
 			 createDrink+= pantryItems.pantry[preferences.ingredients[i]][randomNumber] + "<br>"
 				// console.log(createDrink)
-			document.getElementById("user-preferences").innerHTML = "The Pirate Bartender made you a special cocktail with the following ingredients: " + "<br><br>" + createDrink;
+			document.getElementById("question").innerHTML = "The Pirate Bartender made you a special cocktail with the following ingredients: " + "<br><br>" + createDrink;
 		}
 		yesButton.remove()
 		noButton.remove()
