@@ -1,8 +1,3 @@
-@font-face {
-    font-family: calvin_and_hobbes;
-    src: url(../font/CALVINN.TTF);
-}
-
 @font-face{
     font-family: oranienbaum;
     src: url(../font/Oranienbaum.ttf);
@@ -31,40 +26,48 @@ body {
     background-repeat: no-repeat;
     text-align: center;
     letter-spacing: 1px;
+    padding-top: 100px;
 }
 
 h1,
 .answers {
-     margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 h1 {
-    font-family: calvin_and_hobbes;
+    text-transform: uppercase;
+    color: #fbfafe; 
 }
 
 .intro {
     font-family: oranienbaum;
-    line-height: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    color: #3b0304;
 }
 
 .question {
-    font-style: italic;
     font-weight: bold;
-    margin-bottom: 25px;
+    color: #2a3b48;
+}
+
+.intro,
+#question {
+    line-height: 30px;
 }
 
 button {
-    padding: 8px;
-    border-radius: 12px;
+    padding: 10px;
+    margin-top: 0px;
+    border-radius: 5px;
     background-color: #fff;
-    width: 100px;
+    width: 150px;
     font-size: 14px; 
-    margin-top: 20px;
+    background-color: #2a3b48;
+    color: #fbfafe;
 }
 
 button:hover {
-
+    background-color: #2e4a56;
 }
 
 .yes-btn {
@@ -72,13 +75,17 @@ button:hover {
 }
 
 #user-preferences {
-    /*margin-bottom: 20px;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-style: italic;
 }
 
 .next {
     font-family: 'Helvetica', sans-serif;
-    font-size: 12px; 
     text-transform: uppercase;
+    font-size: 12px;
+    color: #2a3b48;
 }
 
 .next:hover {
@@ -90,27 +97,31 @@ button:hover {
 
 @media only screen and (min-width: 320px) {
     body {
-        color: purple;
         height: 50rem;
         background-position: center top;
-        
     }
 
     .wrapper {
-        padding: 50px 20px;
-        height: 40rem;
+        padding: 50px 0;
         margin: 50px 10px 50px 10px;
         background: rgba(225, 225, 225, .5)
     }
 
     h1 {
-        font-size: 35px;
+        font-size: 30px;
     }
 
     .intro,
-    .question  {
+    .question {
         font-size: 18px;
     }
+
+    .intro,
+    #question {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
 }
 
 
@@ -118,7 +129,8 @@ button:hover {
 
 @media only screen and (min-width: 480px) {
     body {
-        color: green;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
@@ -126,20 +138,13 @@ button:hover {
 /*ipad potrait*/
 
 @media only screen and (min-width: 768px) {
-    body {
-        color: red;
-    }
-
-      .wrapper {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
 
     h1 {
         font-size: 50px;
     }
 
-    .intro {
+    .intro,
+    .question {
         font-size: 20px;
     }
 }
@@ -149,12 +154,8 @@ button:hover {
 
 @media only screen and (min-width: 1024px) {
     body {
-        color: blue;
         height: 48rem;
-    }
-
-    .wrapper {
-        margin-left: 150px;
-        margin-right: 150px;
+        padding-left: 140px;
+        padding-right: 140px;
     }
 }
