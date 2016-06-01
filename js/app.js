@@ -1,6 +1,6 @@
 'use strict'
 
-$(function() {
+$(document).ready(function() {
 
 	var displayQuestion = $('.question')
 	var yesButton = $('.yes-btn')
@@ -71,40 +71,48 @@ function noIngredients() {
 }
 
 function endQuestions() {
-	if (count == 5) {
-		// displays user drink preferences
-		var preferences = new Ingredients(drinkIngredientsRequested);
-		//console.log(preferences) //ingredients array
-		//console.log(preferences.ingredients[0]) // strong
-		//console.log(pantryItems) // pantry object array 
-		//console.log(pantryItems.pantry) // array of pantry
-		//console.log(pantryItems.pantry[preferences.ingredients[0]][Math.floor(Math.random() * 3)]) // ["Rum", "Whiskey", "Gin"]
-		var randomNumber = Math.floor(Math.random() * 3) 
-		var createDrink = " "
+	if (questionIndex == 5) {
+			// displays user drink preferences
+			var preferences = new Ingredients(drinkIngredientsRequested);
+			//console.log(preferences) //ingredients array
+			//console.log(preferences.ingredients[0]) // strong
+			//console.log(pantryItems) // pantry object array 
+			//console.log(pantryItems.pantry) // array of pantry
+			//console.log(pantryItems.pantry[preferences.ingredients[0]][Math.floor(Math.random() * 3)]) // ["Rum", "Whiskey", "Gin"]
+			var randomNumber = Math.floor(Math.random() * 3) 
+			var createDrink = " "
 
-		for (var i = 0 ; i < preferences.ingredients.length; i++) {
-			 createDrink+= pantryItems.pantry[preferences.ingredients[i]][randomNumber] + "<br>"
-				// console.log(createDrink)
-			document.getElementById("question").innerHTML = "The Pirate Bartender made you a special cocktail with the following ingredients: " + "<br><br>" + createDrink;
+			for (var i = 0 ; i < preferences.ingredients.length; i++) {
+				 createDrink+= pantryItems.pantry[preferences.ingredients[i]][randomNumber] + "<br>"
+					// console.log(createDrink)
+				document.getElementById("question").innerHTML = "The Pirate Bartender made you a special cocktail with the following ingredients: " + "<br><br>" + createDrink;
+			}
+			yesButton.remove()
+			noButton.remove()
+			nextButton.remove()
+			$('.intro').remove()
 		}
-		yesButton.remove()
-		noButton.remove()
-		nextButton.remove()
-		$('.intro').remove()
-	}
+	
 }
+
+
 
 //displays first question on page load
 displayQuestion.append(bartenderQuestions.question[questionIndex]) 
 
-yesButton.click(function() {
-	count++
+
+yesButton.click(function(){
 	yesIngredients()
+	count++
+	console.log(count)
 })
 
+
+
 noButton.click(function() {
-	count++
 	noIngredients()
+	count++
+	console.log(count)
 })
 
 //displays next question on click
